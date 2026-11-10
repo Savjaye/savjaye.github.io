@@ -1,0 +1,104 @@
+/* ==========================================================
+   savoodle's space: mossy, misty, almost monotone green
+   with a hint of bark brown. All colors live here as
+   variables, so you can tweak the whole palette in one place.
+   ========================================================== */
+
+:root {
+    /* greens, darkest -> lightest */
+    --moss-deep: #2c3627;   /* page background */
+    --fern: #6b7d5a;        /* tagline */
+    --sage: #9fae88;        /* body text */
+    --lichen: #cfd8bb;      /* title */
+
+    /* the earthy hint */
+    --bark: #5e4a36;        /* fallback text color */
+
+    /* fonts: cute + fairy-tech */
+    --font-title: "Mystery Quest", "Papyrus", fantasy;
+    --font-cute: "Sour Gummy", "Comic Sans MS", cursive;
+    --font-tech: "VT323", ui-monospace, monospace;
+    --font-body: "Space Mono", ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--moss-deep);
+    color: var(--bark);
+    font-family: var(--font-body);
+}
+
+/* ---------- home page ---------- */
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    /* soft glowing mist over the moss */
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(207, 216, 187, 0.12), transparent 55%),
+        radial-gradient(ellipse at 85% 90%, rgba(138, 115, 90, 0.18), transparent 50%),
+        var(--moss-deep);
+}
+
+/* no card: just a centered column of text on the moss */
+.background {
+    width: min(640px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+}
+
+/* little tagline on top */
+.header p {
+    margin: 0;
+    font-family: var(--font-tech);
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    color: var(--fern);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.main-content h1 {
+    margin: 0;
+}
+
+.main-content p {
+    max-width: 46ch;
+    margin: 0 auto;
+}
+
+/* ---------- type ---------- */
+
+h1 {
+    font-family: var(--font-title);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 9vw, 4.4rem);
+    letter-spacing: 0.02em;
+    color: var(--lichen);
+    /* faint misty glow for drama */
+    text-shadow: 0 0 18px rgba(207, 216, 187, 0.25);
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--sage);
+}
