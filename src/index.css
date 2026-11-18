@@ -39,8 +39,9 @@ body {
 .home {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+
     padding: 24px 16px;
     /* soft glowing mist over the moss */
     background:
@@ -50,7 +51,7 @@ body {
 }
 
 /* no card: just a centered column of text on the moss */
-.background {
+.main-content-container {
     width: min(640px, 100%);
     display: flex;
     flex-direction: column;
@@ -84,6 +85,26 @@ body {
     margin: 0 auto;
 }
 
+.folder-container {
+    margin-bottom: 400px;
+}
+
+.folder {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid var(--lichen);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--lichen);
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    transition: all 0.2s ease-in-out;
+    background:
+        radial-gradient(ellipse at 20% 15%, rgba(207, 216, 187, 0.12), transparent 55%),
+        radial-gradient(ellipse at 85% 90%, rgba(138, 115, 90, 0.18), transparent 50%),
+        var(--moss-deep);
+}
+
 /* ---------- type ---------- */
 
 h1 {
@@ -101,4 +122,346 @@ p {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--sage);
+}
+
+/* ==========================================================
+   tutorial page: enchanted forest meets terminal.
+   Same moss palette as home, plus a few extra forest tones.
+   Everything is scoped under .tutorial.
+   ========================================================== */
+
+.tutorial {
+    /* extra forest tones, just for this page */
+    --undergrowth: #232c1f;   /* code + panel background */
+    --firefly: #d8e39a;       /* soft glowing accent */
+    --mushroom: #b39a7c;      /* warm accent for notes */
+    --line: rgba(159, 174, 136, 0.22);
+
+    min-height: 100vh;
+    padding: 48px 16px 96px;
+    background:
+        radial-gradient(ellipse at 20% 0%, rgba(207, 216, 187, 0.1), transparent 55%),
+        radial-gradient(ellipse at 85% 100%, rgba(138, 115, 90, 0.14), transparent 50%),
+        var(--moss-deep);
+}
+
+.tutorial ::selection {
+    background: var(--firefly);
+    color: var(--moss-deep);
+}
+
+/* one readable column */
+.tutorial-content {
+    width: min(680px, 100%);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.tutorial .back-link {
+    align-self: flex-start;
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    color: var(--fern);
+    text-decoration: none;
+}
+
+.tutorial .back-link:hover {
+    color: var(--firefly);
+}
+
+/* ---------- header ---------- */
+
+.tutorial-header {
+    text-align: center;
+}
+
+.tutorial .tutorial-tag {
+    margin: 0;
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+    color: var(--fern);
+}
+
+.tutorial h1 {
+    margin: 8px 0 16px;
+    color: var(--lichen);
+    /* faint firefly glow */
+    text-shadow: 0 0 22px rgba(216, 227, 154, 0.22);
+}
+
+.tutorial .blurb {
+    font-family: var(--font-cute);
+    font-size: 1.15rem;
+    color: var(--lichen);
+}
+
+/* a quiet blinking cursor after the intro */
+.tutorial-header .blurb::after {
+    content: "_";
+    margin-left: 2px;
+    font-family: var(--font-tech);
+    color: var(--firefly);
+    animation: blink 1.2s steps(1) infinite;
+}
+
+/* ---------- contents box (wiki style) ---------- */
+
+.tutorial .contents {
+    align-self: flex-start;
+    min-width: min(320px, 100%);
+    padding: 14px 20px 16px;
+    background: var(--undergrowth);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+}
+
+.tutorial .contents-title {
+    margin: 0 0 6px;
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    color: var(--fern);
+}
+
+.tutorial .contents ol {
+    margin: 0;
+    padding-left: 1.4em;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--fern);
+}
+
+.tutorial .contents ol ol {
+    padding-left: 1.2em;
+    list-style: lower-alpha;
+}
+
+.tutorial .contents a {
+    color: var(--lichen);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--fern);
+}
+
+.tutorial .contents a:hover {
+    color: var(--firefly);
+    border-bottom-color: var(--firefly);
+}
+
+.tutorial .coming-soon {
+    font-style: italic;
+    color: var(--fern);
+}
+
+/* ---------- chapters ---------- */
+
+.tutorial .chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    scroll-margin-top: 24px;
+}
+
+.tutorial .chapter-title {
+    margin: 0;
+    padding-bottom: 6px;
+    font-family: var(--font-tech);
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: 0.02em;
+    color: var(--firefly);
+    border-bottom: 1px solid var(--fern);
+}
+
+.tutorial .chapter-number {
+    margin-right: 8px;
+    color: var(--fern);
+}
+
+/* ---------- steps ---------- */
+
+.tutorial .step {
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 24px;
+}
+
+/* first step sits right under the chapter title, no extra line */
+.tutorial .chapter-title + .step {
+    padding-top: 0;
+    border-top: none;
+}
+
+.tutorial h3 {
+    margin: 0 0 12px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--lichen);
+}
+
+.tutorial .step-number {
+    margin-right: 10px;
+    font-family: var(--font-tech);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--firefly);
+}
+
+/* ---------- pros & cons ---------- */
+
+.tutorial .pros-cons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.tutorial .pros,
+.tutorial .cons {
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+}
+
+.tutorial .pros { border-top: 2px solid var(--firefly); }
+.tutorial .cons { border-top: 2px solid var(--mushroom); }
+
+.tutorial .list-title {
+    margin: 0 0 4px;
+    font-family: var(--font-tech);
+    font-size: 1.25rem;
+}
+
+.tutorial .pros .list-title { color: var(--firefly); }
+.tutorial .cons .list-title { color: var(--mushroom); }
+
+.tutorial .pros-cons ul {
+    margin: 0;
+    padding-left: 1.1em;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--sage);
+}
+
+.tutorial .pros-cons li + li {
+    margin-top: 6px;
+}
+
+.tutorial .pros-cons strong {
+    color: var(--lichen);
+}
+
+/* the dramatic terminal music */
+.tutorial .dun {
+    font-family: var(--font-tech);
+    font-size: 1.2em;
+    color: var(--mushroom);
+}
+
+/* "not the end" marker at the bottom */
+.tutorial .to-be-continued {
+    margin: 0;
+    padding-top: 24px;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    color: var(--fern);
+}
+
+/* ---------- code ---------- */
+
+.tutorial .code-block {
+    margin: 16px 0;
+    padding: 14px 16px;
+    overflow-x: auto; /* long lines scroll instead of breaking the layout */
+    background: var(--undergrowth);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--fern);
+    border-radius: 4px;
+}
+
+.tutorial .code-block code {
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--firefly);
+}
+
+/* inline code inside a sentence */
+.tutorial p code {
+    padding: 1px 6px;
+    font-family: var(--font-tech);
+    font-size: 1.1em;
+    color: var(--firefly);
+    background: var(--undergrowth);
+    border-radius: 3px;
+}
+
+/* ---------- note ---------- */
+
+.tutorial .note {
+    margin: 16px 0;
+    padding: 12px 16px;
+    border-left: 2px solid var(--mushroom);
+    background: rgba(138, 115, 90, 0.12);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--sage);
+}
+
+.tutorial .note strong {
+    font-family: var(--font-tech);
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--mushroom);
+}
+
+/* ---------- details ---------- */
+
+.tutorial .details {
+    margin: 16px 0;
+    padding: 8px 16px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+}
+
+.tutorial .details summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-tech);
+    font-size: 1.2rem;
+    color: var(--fern);
+}
+
+.tutorial .details summary::-webkit-details-marker {
+    display: none;
+}
+
+.tutorial .details summary::before {
+    content: "> ";
+    color: var(--firefly);
+}
+
+.tutorial .details[open] summary::before {
+    content: "v ";
+}
+
+.tutorial .details summary:hover {
+    color: var(--lichen);
+}
+
+/* ---------- motion ---------- */
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tutorial-header .blurb::after {
+        animation: none;
+    }
 }
