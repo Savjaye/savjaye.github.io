@@ -105,7 +105,7 @@ export default function LocalLlmTutorial() {
                         <p>
                             The commands will differ depending on your operating system, but I will include commands for both Mac and Windows.
                             Before we get started, lets make sure you can open your terminal and run basic commands. Open your terminal (Terminal 
-                            on Mac of PowerShell on Windows) <code>echo hello</code> and hit enter. You should see <code>hello</code> printed back to you.
+                            on Mac of PowerShell on Windows) and type <code>echo hello</code> and hit enter. You should see <code>hello</code> printed back to you.
                         </p>
 
 
